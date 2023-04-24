@@ -25,7 +25,16 @@ SECRET_KEY = 'django-insecure-x@@dk)a*_j(-nzto_4_y4*s6c+pw0fb&o(vxk)xf=cuovvi1t!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CORS_ORIGIN_ALLOW_ALL = False
+ALLOWED_HOSTS = [
+    "127.0.0.1", 
+    "http://localhost:3000",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1", 
+    "http://localhost:3000",
+]
 
 
 # Application definition
@@ -41,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'loginAPI',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'GhostProjectBackend.urls'
@@ -88,9 +99,9 @@ DATABASES = {
   'default': {
     # MySQL engine. Powered by the mysqlclient module.
     'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'project',
+    'NAME': 'project1',
     'USER': 'root',
-    'PASSWORD': 'edodoe2',
+    'PASSWORD': 'root',
     'HOST': 'localhost',
     'PORT': '3306',
   }
