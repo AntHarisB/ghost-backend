@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'PerformanceTab',
     'rest_framework.authtoken',
+    'django_seed',
 ]
 
 MIDDLEWARE = [
