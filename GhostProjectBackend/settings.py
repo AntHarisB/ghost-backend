@@ -9,6 +9,13 @@ SECRET_KEY = env("SECRET_KEY", default="unsafe-secret-key")
 
 DEBUG = True
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://localhost:3001"
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'loginAPI',
+    'corsheaders',
     'rest_framework.authtoken',
     'django.contrib.sites',
 ]
