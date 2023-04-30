@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from PerformanceTab.view_projectstats import ProjectStats
-from PerformanceTab.view_projectcreationcount import ProjectCreationCount
-from PerformanceTab.view_projecttype import ProjectTypeCount
+from PerformanceTab.view_stats import ProjectStats
+from PerformanceTab.view_projectcreation import ProjectCreationCount
+from PerformanceTab.view_typeofproject import ProjectTypeCount
 
 urlpatterns = [
     path('admin/', admin.site.urls),
