@@ -1,9 +1,6 @@
 from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from .models import ProjectInformation
 from .serializer_typeofproject import ProjectTypeSerializer
-from django.db.models import Avg, Sum, Count
 
 class ProjectTypeCount(generics.ListAPIView):
     serializer_class = ProjectTypeSerializer
