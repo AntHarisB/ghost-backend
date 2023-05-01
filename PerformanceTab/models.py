@@ -14,3 +14,5 @@ class ProjectInformation (models.Model):
     type_of_project = models.CharField(max_length=100)
     hours_available = models.IntegerField()
     hours_billed = models.IntegerField()
+    date_start = models.DateField(null=True)
+    date_end = models.DateField(null=True)
