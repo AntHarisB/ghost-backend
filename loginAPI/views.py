@@ -9,7 +9,6 @@ from rest_framework.authentication import TokenAuthentication
 
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    #authentication_classes = (TokenAuthentication,)
     serializer_class = UserSerializer
     queryset = get_user_model().objects.all()
 
