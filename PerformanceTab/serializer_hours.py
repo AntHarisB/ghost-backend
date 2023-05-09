@@ -9,6 +9,7 @@ class ProjectHoursSerializer(serializers.Serializer):
     hours_available = serializers.IntegerField()
     hours_billed = serializers.IntegerField()
     project_name = serializers.CharField()
+    type_of_project = serializers.CharField()
     id = serializers.IntegerField()
 
     def get_date_start(self, obj):
@@ -22,4 +23,4 @@ class ProjectHoursSerializer(serializers.Serializer):
     
     class Meta:
         model = ProjectInformation
-        fields = ['id', 'project_name', 'hours_available', 'hours_billed', 'date_start ', 'month']
+        fields = ['id', 'project_name', 'hours_available', 'hours_billed', 'date_start ', 'month', 'type_of_project']
