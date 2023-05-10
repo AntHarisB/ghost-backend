@@ -1,0 +1,4 @@
+GhostProjectBackend/.env
+*.pyc
+.env
+

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'PerformanceTab',
+    'loginAPI',
     'corsheaders',
     'rest_framework.authtoken',
     'django.contrib.sites',
@@ -113,3 +114,4 @@ SIMPLE_JWT = {
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
