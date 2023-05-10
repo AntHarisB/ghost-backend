@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'loginAPI',
+    'PerformanceTab',
     'corsheaders',
     'rest_framework.authtoken',
     'django.contrib.sites',
