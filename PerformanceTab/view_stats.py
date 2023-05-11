@@ -1,11 +1,13 @@
 from rest_framework import generics
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from .models import ProjectInformation
 from .serializer_stats import ProjectSerializer
 from django.db.models import Avg, Sum
 
 class ProjectStats(generics.ListAPIView):
     serializer_class = ProjectSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         year = self.kwargs['year']
