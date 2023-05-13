@@ -16,3 +16,4 @@ class ProjectInformation (models.Model):
     hours_billed = models.IntegerField()
     date_start = models.DateField(null=True)
     date_end = models.DateField(null=True)
+    members = models.ManyToManyField('auth.User')
