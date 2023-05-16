@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 
 class ProjectInformation (models.Model):
@@ -17,3 +18,14 @@ class ProjectInformation (models.Model):
     date_start = models.DateField(null=True)
     date_end = models.DateField(null=True)
     members = models.ManyToManyField('auth.User')
+    project_value_planned = models.FloatField(null=True)
+    costs_planned = models.FloatField(null=True)
+    costs_actual = models.FloatField(null=True)
+    margin = models.FloatField(null=True)
+
+    @property
+    def margin(self):
+        if self.project_value and self.costs_actual:
+            return (self.costs_actual / self.project_value) * 100
+        return None
+
