@@ -22,14 +22,17 @@ class StatsRevenueCostSerializer(serializers.Serializer):
         actual_revenue = self.get_actual_revenue(obj)
         planned_direct_cost = self.get_planned_direct_cost(obj)
         if actual_revenue and planned_direct_cost:
-            return (actual_revenue / planned_direct_cost) * 100
+            margin = (actual_revenue / planned_direct_cost) * 100
+            rounded_margin = round(margin)
+            return int(rounded_margin)
         return None
     
     def get_actual_gross_profit(self, obj):
         actual_revenue = self.get_actual_revenue(obj)
         planned_direct_cost = self.get_planned_direct_cost(obj)
         if actual_revenue and planned_direct_cost:
-            return actual_revenue - planned_direct_cost
+            rounded_gross = round(actual_revenue - planned_direct_cost, 2)
+            return rounded_gross
         return None
     
     class Meta:

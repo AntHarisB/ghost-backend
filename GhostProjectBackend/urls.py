@@ -6,6 +6,7 @@ from PerformanceTab.view_projectcreation import ProjectCreationCount
 from PerformanceTab.view_typeofproject import ProjectTypeCount
 from PerformanceTab.views_hours import ProjectHours
 from RevenueCosts.stats_rev_cost_view import StatsRevenueCost
+from RevenueCosts.rev_cost_perp_view import ActualRevenueCosts
 from django.urls import path, include
 from django.contrib import admin
 from loginAPI.views import UserViewSet
@@ -24,6 +25,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/stats_revenue_costs/<int:year>/', StatsRevenueCost.as_view(), name='stats_revenue_costs'),
+    path('api/acutal_costs_revenue/<int:year>/', ActualRevenueCosts.as_view(), name='acutal_costs_revenue'),
 
 ]
 
