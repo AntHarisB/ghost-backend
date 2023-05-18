@@ -1,12 +1,13 @@
 from rest_framework import generics
 from PerformanceTab.models import ProjectInformation
-from datetime import date, timedelta
-from django.db.models.functions import ExtractMonth
+from datetime import date
+from rest_framework.permissions import IsAuthenticated
 from django.db.models import Q
 from .rev_cost_perp_perm_serializer import ActualRevenueCostsMonthSerializer
 
 class RevenueCostPerMonth(generics.ListAPIView):
     serializer_class = ActualRevenueCostsMonthSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         year = self.kwargs['year']
