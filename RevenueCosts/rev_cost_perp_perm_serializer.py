@@ -8,6 +8,7 @@ class ActualRevenueCostsMonthSerializer(serializers.ModelSerializer):
     month = serializers.SerializerMethodField()
     date_project = serializers.SerializerMethodField()
     month_name = serializers.SerializerMethodField()
+    actual_avg_margin = serializers.SerializerMethodField()
 
     def get_date_project(self, obj):
         date_project_str = obj.date_start.strftime('%d-%m-%Y')
@@ -39,4 +40,4 @@ class ActualRevenueCostsMonthSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ProjectInformation
-        fields = ['costs_actual', 'costs_planned', 'project_value', 'project_value_planned', 'revenue_gap', 'month', 'month_name', 'date_project']
+        fields = ['costs_actual', 'costs_planned', 'project_value', 'project_value_planned', 'revenue_gap', 'month', 'month_name', 'date_project', 'actual_avg_margin']

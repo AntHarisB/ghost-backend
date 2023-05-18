@@ -13,6 +13,8 @@ class StatsRevenueCost(generics.ListAPIView):
         return queryset
 
     def get_serializer_context(self):
-        return {'year': self.kwargs['year']}
+        context = super().get_serializer_context()
+        context['year'] = self.kwargs['year']
+        return context
 
 
