@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from PerformanceTab.models import ProjectInformation
-from django.db.models import Avg, Sum
+from django.db.models import Sum
 
 class StatsRevenueCostSerializer(serializers.Serializer):
     actual_revenue = serializers.SerializerMethodField()

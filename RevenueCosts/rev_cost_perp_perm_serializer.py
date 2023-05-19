@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from PerformanceTab.models import ProjectInformation
-from datetime import date, timedelta
-from django.db.models import Q
+from datetime import date
 
 class ActualRevenueCostsMonthSerializer(serializers.ModelSerializer):
     revenue_gap = serializers.SerializerMethodField()
