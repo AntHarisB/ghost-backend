@@ -21,11 +21,15 @@ class ProjectInformation (models.Model):
     project_value_planned = models.FloatField(null=True)
     costs_planned = models.FloatField(null=True)
     costs_actual = models.FloatField(null=True)
-    margin = models.FloatField(null=True)
-
-    @property
-    def margin(self):
-        if self.project_value and self.costs_actual:
-            return (self.costs_actual / self.project_value) * 100
-        return None
+    development = models.FloatField(null=True)
+    design = models.FloatField(null=True)
+    other = models.FloatField(null=True)
+    total_revenue = models.FloatField(null=True)
+    direct = models.FloatField(null=True)
+    indirect = models.FloatField(null=True)
+    marketing = models.FloatField(null=True)
+    HRcost = models.FloatField(null=True)
+    officeCost = models.FloatField(null=True)
+    salesCosts = models.FloatField(null=True)
+    otherCosts = models.FloatField(null=True)
 
