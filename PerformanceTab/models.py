@@ -22,6 +22,9 @@ class ProjectInformation (models.Model):
     costs_planned = models.FloatField(null=True)
     costs_actual = models.FloatField(null=True)
     margin = models.FloatField(null=True)
+    description = models.CharField(max_length=255, null=True)
+    status = models.CharField (max_length=100, null=True)
+
 
     @property
     def margin(self):
