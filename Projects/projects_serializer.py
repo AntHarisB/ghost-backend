@@ -7,7 +7,7 @@ class ProjectInfoSerializer(serializers.ModelSerializer):
     start = serializers.SerializerMethodField()
     end = serializers.SerializerMethodField()
     users = serializers.SerializerMethodField()
-    team_size = serializers.SerializerMethodField()
+
 
     def get_users(self, obj):
         members = obj.members.all()
@@ -35,9 +35,7 @@ class ProjectInfoSerializer(serializers.ModelSerializer):
         end = date_end.strftime("%b %Y")
         return end
     
-    def get_team_size(self, obj):
-        return obj.team_s
     
     class Meta:
         model = ProjectInformation
-        fields = ['total_projects', 'project_name', 'description', 'start', 'end', 'team_size', 'project_value', 'status', 'hourly_price']
+        fields = ['total_projects', 'project_name', 'description', 'start', 'end', 'team_s', 'project_value', 'status', 'hourly_price']

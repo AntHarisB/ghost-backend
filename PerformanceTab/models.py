@@ -5,7 +5,7 @@ class ProjectInformation (models.Model):
 
     project_name = models.CharField(max_length=100)
     project_value = models.FloatField()
-    team_size = models.IntegerField()
+    team_s = models.IntegerField()
     velocity = models.IntegerField()
     weeks_over_ddl = models.IntegerField()
     hourly_price = models.IntegerField()
