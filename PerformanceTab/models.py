@@ -5,7 +5,7 @@ class ProjectInformation (models.Model):
 
     project_name = models.CharField(max_length=100)
     project_value = models.FloatField()
-    team_size = models.IntegerField()
+    team_s = models.IntegerField(blank=True, null=True)
     velocity = models.IntegerField()
     weeks_over_ddl = models.IntegerField()
     hourly_price = models.IntegerField()
@@ -28,4 +28,9 @@ class ProjectInformation (models.Model):
         if self.project_value and self.costs_actual:
             return (self.costs_actual / self.project_value) * 100
         return None
+    
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     self.team_s = self.members.count()
+    #     self.save()
 
