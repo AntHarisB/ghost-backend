@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from PerformanceTab.models import ProjectInformation
 from .models import Profile
+from django.contrib.auth.models import User
 
 class ProjectInfoSerializer(serializers.ModelSerializer):
     total_projects = serializers.SerializerMethodField()
@@ -8,19 +9,19 @@ class ProjectInfoSerializer(serializers.ModelSerializer):
     end = serializers.SerializerMethodField()
     users = serializers.SerializerMethodField()
 
-
     def get_users(self, obj):
         members = obj.members.all()
         users_data = []
         for member in members:
-            profile = Profile.objects.get(user=member.user)
-            user_data = {
-                'first_name': member.user.first_name,
-                'last_name': member.user.last_name,
-                'profile_image': profile.profile_photo if profile else None
-            }
-            users_data.append(user_data)
+            profile = Profile.objects.get(user=member)
+            users_data.append({
+                'first_name': member.first_name,
+                'last_name': member.last_name,
+                'profile_photo': profile.profile_photo,
+            })
+
         return users_data
+
     
     def get_total_projects(self, obj):
         return ProjectInformation.objects.count()
@@ -38,4 +39,4 @@ class ProjectInfoSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ProjectInformation
-        fields = ['total_projects', 'project_name', 'description', 'start', 'end', 'team_s', 'project_value', 'status', 'hourly_price']
+        fields = ['total_projects', 'project_name', 'description', 'start', 'end', 'team_s', 'project_value', 'status', 'hourly_price', 'users']
