@@ -97,6 +97,7 @@ UPDATE performancetab_projectinformation SET date_start = '2022-05-02' WHERE id 
 UPDATE performancetab_projectinformation SET date_end = '2022-06-18' WHERE id = 22;
 UPDATE performancetab_projectinformation SET date_end = '2022-07-11' WHERE id = 23;
 
+
 UPDATE performancetab_projectinformation SET date_start = '2023-04-07' WHERE id = 24;
 UPDATE performancetab_projectinformation SET date_start = '2023-05-08' WHERE id = 25;
 UPDATE performancetab_projectinformation SET date_start = '2023-06-09' WHERE id = 26;
@@ -117,6 +118,123 @@ SET development = '1300000.00',
     salesCosts = '99850.00',
     otherCosts = '648.00'
 WHERE id = 5;
+
+UPDATE performancetab_projectinformation
+SET development = '1300000.00',
+    design = '2150500.00',
+    other = '31000000.00',
+    total_revenue = '1900000.00',
+    direct = '3900000.00',
+    indirect = '1755600.00',
+    marketing = '7480200.00',
+    HRcost = '287050.00',
+    officeCost = '211100.00',
+    salesCosts = '99850.00',
+    otherCosts = '648.00'
+WHERE id = 5;
+
+UPDATE performancetab_projectinformation
+SET development = CASE
+        WHEN id = 14 THEN '1300000.00'
+        WHEN id = 24 THEN '1500000.00'
+        WHEN id = 25 THEN '1400000.00'
+        WHEN id = 26 THEN '1600000.00'
+        ELSE development
+    END,
+    design = CASE
+        WHEN id = 14 THEN '2150500.00'
+        WHEN id = 24 THEN '2200000.00'
+        WHEN id = 25 THEN '2100000.00'
+        WHEN id = 26 THEN '2300000.00'
+        ELSE design
+    END,
+    other = CASE
+        WHEN id = 14 THEN '31000000.00'
+        WHEN id = 24 THEN '32000000.00'
+        WHEN id = 25 THEN '30000000.00'
+        WHEN id = 26 THEN '33000000.00'
+        ELSE other
+    END,
+    total_revenue = CASE
+        WHEN id = 14 THEN '1900000.00'
+        WHEN id = 24 THEN '2000000.00'
+        WHEN id = 25 THEN '1800000.00'
+        WHEN id = 26 THEN '2100000.00'
+        ELSE total_revenue
+    END,
+    direct = CASE
+        WHEN id = 14 THEN '3650000.00'
+        WHEN id = 24 THEN '4100100.00'
+        WHEN id = 25 THEN '4000500.00'
+        WHEN id = 26 THEN '3960300.00'
+        ELSE other
+    END,
+    indirect = CASE
+        WHEN id = 14 THEN '1650000.00'
+        WHEN id = 24 THEN '1730605.00'
+        WHEN id = 25 THEN '1420300.00'
+        WHEN id = 26 THEN '1690900.00'
+        ELSE other
+    END,
+    marketing = CASE
+        WHEN id = 14 THEN '7960000.00'
+        WHEN id = 24 THEN '8350000.00'
+        WHEN id = 25 THEN '8102200.00'
+        WHEN id = 26 THEN '7900800.00'
+        ELSE other
+    END,
+    HRcost = CASE
+        WHEN id = 14 THEN '460800.00'
+        WHEN id = 24 THEN '450200.00'
+        WHEN id = 25 THEN '510050.00'
+        WHEN id = 26 THEN '500200.00'
+        ELSE other
+    END,
+    officeCost = CASE
+        WHEN id = 14 THEN '98600.00'
+        WHEN id = 24 THEN '101200.00'
+        WHEN id = 25 THEN '100500.00'
+        WHEN id = 26 THEN '97050.00'
+        ELSE other
+    END,
+    salesCosts = CASE
+        WHEN id = 14 THEN '53000.00'
+        WHEN id = 24 THEN '51200.00'
+        WHEN id = 25 THEN '52630.00'
+        WHEN id = 26 THEN '49800.00'
+        ELSE other
+    END,
+    otherCosts = CASE
+        WHEN id = 14 THEN '750.00'
+        WHEN id = 24 THEN '610.00'
+        WHEN id = 25 THEN '930.00'
+        WHEN id = 26 THEN '775.00'
+        ELSE other
+    END
+WHERE id IN (14, 24, 25, 26);
+
+
+UPDATE performancetab_projectinformation SET date_start = '2023-04-07' WHERE id = 24;
+UPDATE performancetab_projectinformation SET date_start = '2023-05-08' WHERE id = 25;
+UPDATE performancetab_projectinformation SET date_start = '2023-06-09' WHERE id = 26;
+UPDATE performancetab_projectinformation SET date_end = '2023-06-10' WHERE id = 24;
+UPDATE performancetab_projectinformation SET date_end = NULL WHERE id = 25;
+UPDATE performancetab_projectinformation SET date_end = NULL WHERE id = 26;
+
+UPDATE performancetab_projectinformation
+SET development = '1300000.00',
+    design = '2150500.00',
+    other = '31000000.00',
+    total_revenue = '1900000.00',
+    direct = '3900000.00',
+    indirect = '1755600.00',
+    marketing = '7480200.00',
+    HRcost = '287050.00',
+    officeCost = '211100.00',
+    salesCosts = '99850.00',
+    otherCosts = '648.00'
+WHERE id = 5;
+
 
 UPDATE performancetab_projectinformation
 SET development = '1300000.00',
