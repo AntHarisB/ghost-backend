@@ -8,6 +8,7 @@ from PerformanceTab.views_hours import ProjectHours
 from RevenueCosts.stats_rev_cost_view import StatsRevenueCost
 from RevenueCosts.rev_cost_perp_view import ActualRevenueCosts
 from RevenueCosts.rev_cost_perp_perm_view import RevenueCostPerMonth
+from Projects.projects_view import ProjectInfo
 from Plan.plan_view import Plan
 from django.urls import path, include
 from django.contrib import admin
@@ -29,6 +30,7 @@ urlpatterns = [
     path('api/stats_revenue_costs/<int:year>/', StatsRevenueCost.as_view(), name='stats_revenue_costs'),
     path('api/actual_costs_revenue/<int:year>/', ActualRevenueCosts.as_view(), name='acutal_costs_revenue'),
     path('api/actual_planned_costs_revenue/<int:year>/', RevenueCostPerMonth.as_view(), name='actual_planned_costs_revenue'),
+    path('api/projects/', ProjectInfo.as_view(), name='projects')
     path('api/plan', Plan.as_view(), name='2023-plan')
 
 ]

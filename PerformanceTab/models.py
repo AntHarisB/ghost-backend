@@ -33,6 +33,9 @@ class ProjectInformation (models.Model):
     salesCosts = models.FloatField(null=True)
     otherCosts = models.FloatField(null=True)
     margin = models.FloatField(null=True)
+    description = models.CharField(max_length=255, null=True)
+    status = models.CharField (max_length=100, null=True)
+
 
     @property
     def margin(self):
@@ -40,9 +43,6 @@ class ProjectInformation (models.Model):
             return (self.costs_actual / self.project_value) * 100
         return None
     
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-    #     self.team_s = self.members.count()
-    #     self.save()
+
 
 
