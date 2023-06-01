@@ -30,7 +30,7 @@ urlpatterns = [
     path('api/stats_revenue_costs/<int:year>/', StatsRevenueCost.as_view(), name='stats_revenue_costs'),
     path('api/actual_costs_revenue/<int:year>/', ActualRevenueCosts.as_view(), name='acutal_costs_revenue'),
     path('api/actual_planned_costs_revenue/<int:year>/', RevenueCostPerMonth.as_view(), name='actual_planned_costs_revenue'),
-    path('api/projects/', ProjectInfo.as_view(), name='projects')
+    path('api/projects/', ProjectInfo.as_view(), name='projects'),
     path('api/plan', Plan.as_view(), name='2023-plan')
 
 ]
