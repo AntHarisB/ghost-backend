@@ -8,7 +8,7 @@ from django.db.models import Count
 
 class ProjectStats(generics.ListAPIView):
     serializer_class = ProjectSerializer
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         year = self.kwargs['year']
