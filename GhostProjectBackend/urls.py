@@ -19,19 +19,18 @@ from rest_framework.routers import DefaultRouter
 from loginAPI.views import UserViewSet
 
 urlpatterns = [
-    path('project-statistics/<int:year>/', ProjectStats.as_view(), name='project-stats'),
-    path('projectcreation-count/<int:year>/', ProjectCreationCount.as_view(), name='projectcreation-count'),
-    path('projecttype-count/<int:year>/', ProjectTypeCount.as_view(), name='projecttype-count'),
-    path('project-hours/<int:year>/', ProjectHours.as_view(), name='project-hours'),
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/project-statistics/<int:year>/', ProjectStats.as_view(), name='project-stats'),
+    path('api/projectcreation-count/<int:year>/', ProjectCreationCount.as_view(), name='projectcreation-count'),
+    path('api/projecttype-count/<int:year>/', ProjectTypeCount.as_view(), name='projecttype-count'),
+    path('api/project-hours/<int:year>/', ProjectHours.as_view(), name='project-hours'),
     path('api/stats_revenue_costs/<int:year>/', StatsRevenueCost.as_view(), name='stats_revenue_costs'),
     path('api/actual_costs_revenue/<int:year>/', ActualRevenueCosts.as_view(), name='acutal_costs_revenue'),
     path('api/actual_planned_costs_revenue/<int:year>/', RevenueCostPerMonth.as_view(), name='actual_planned_costs_revenue'),
-    path('api/projects/', ProjectInfo.as_view(), name='projects'),
-    path('api/plan', Plan.as_view(), name='2023-plan')
+    path('api/projects/<int:page_size>/', ProjectInfo.as_view(), name='projects'),
+    path('api/plan', Plan.as_view(), name='2023-plan'),
+    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset'))
 
 ]
 
