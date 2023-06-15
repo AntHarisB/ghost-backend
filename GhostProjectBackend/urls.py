@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path, include
 from PerformanceTab.view_stats import ProjectStats
@@ -17,6 +16,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from loginAPI.views import UserViewSet
+from Employees.employees_view import Employee
+from Employees.edit_employee_view import EmployeeUpdateView
 
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -30,7 +31,10 @@ urlpatterns = [
     path('api/actual_planned_costs_revenue/<int:year>/', RevenueCostPerMonth.as_view(), name='actual_planned_costs_revenue'),
     path('api/projects/<int:page_size>/', ProjectInfo.as_view(), name='projects'),
     path('api/plan', Plan.as_view(), name='2023-plan'),
-    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset'))
+    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('api/employees/<int:page_size>/', Employee.as_view(), name='employees'),
+    path('api/employees/edit/<int:pk>/', EmployeeUpdateView.as_view(), name='employee-update'),
+
 
 ]
 
