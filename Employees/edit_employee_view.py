@@ -17,11 +17,28 @@ class EmployeeUpdateView(APIView):
 
     def put(self, request, pk, format=None):
         instance = self.get_object(pk)
-        serializer = UserSerializer(instance, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        user_serializer = UserSerializer(instance, data=request.data, partial=True)
+        profile_instance = instance.profile
+        profile_data = {
+            'monthly_salary': request.data.get('monthly_salary', profile_instance.monthly_salary),
+            'department': request.data.get('department', profile_instance.department),
+            'tech_stack': request.data.get('tech_stack', profile_instance.tech_stack)
+        }
+        profile_serializer = ProfileSerializer(profile_instance, data=profile_data, partial=True)
+
+        if user_serializer.is_valid() and profile_serializer.is_valid():
+            user_serializer.save()
+            profile_serializer.save()
+            return Response(user_serializer.data)
+
+        return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
 
 
 
