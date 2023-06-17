@@ -19,6 +19,7 @@ from loginAPI.views import UserViewSet
 from Employees.employees_view import Employee
 from Employees.edit_employee_view import EmployeeUpdateView
 from Employees.add_employee_view import EmployeeAddView
+from Employees.delete_employee_view import EmployeeDeleteView
 
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -36,6 +37,7 @@ urlpatterns = [
     path('api/employees/<int:page_size>/', Employee.as_view(), name='employees'),
     path('api/employees/edit/<int:pk>/', EmployeeUpdateView.as_view(), name='employee-update'),
     path('api/add_employee/', EmployeeAddView.as_view(), name='employee-add'),
+    path('api/delete_employee/<int:pk>/', EmployeeDeleteView.as_view(), name='delete_employee'),
 
 
 ]
