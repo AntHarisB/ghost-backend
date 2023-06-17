@@ -20,6 +20,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from loginAPI.views import UserViewSet
+from Projects.add_project_view import ProjectCreateView
 
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -36,7 +37,8 @@ urlpatterns = [
     path('api/inactive_projects/<int:page_size>/', InactiveProjectInfo.as_view(), name='inactive_projects'),
     path('api/onhold_projects/<int:page_size>/', OnholdProjectInfo.as_view(), name='onhold_projects'),
     path('api/plan', Plan.as_view(), name='2023-plan'),
-    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset'))
+    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('api/add_project/', ProjectCreateView.as_view(), name='create_project'),
 
 ]
 
