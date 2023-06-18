@@ -8,6 +8,9 @@ from RevenueCosts.stats_rev_cost_view import StatsRevenueCost
 from RevenueCosts.rev_cost_perp_view import ActualRevenueCosts
 from RevenueCosts.rev_cost_perp_perm_view import RevenueCostPerMonth
 from Projects.projects_view import ProjectInfo
+from Projects.active_projects_view import ActiveProjectInfo
+from Projects.inactive_projects_view import InactiveProjectInfo
+from Projects.onhold_projects_view import OnholdProjectInfo
 from Plan.plan_view import Plan
 from django.urls import path, include
 from django.contrib import admin
@@ -20,6 +23,8 @@ from Employees.employees_view import Employee
 from Employees.edit_employee_view import EmployeeUpdateView
 from Employees.add_employee_view import EmployeeAddView
 from Employees.delete_employee_view import EmployeeDeleteView
+from Projects.add_project_view import ProjectCreateView
+
 
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -32,12 +37,16 @@ urlpatterns = [
     path('api/actual_costs_revenue/<int:year>/', ActualRevenueCosts.as_view(), name='acutal_costs_revenue'),
     path('api/actual_planned_costs_revenue/<int:year>/', RevenueCostPerMonth.as_view(), name='actual_planned_costs_revenue'),
     path('api/projects/<int:page_size>/', ProjectInfo.as_view(), name='projects'),
+    path('api/active_projects/<int:page_size>/', ActiveProjectInfo.as_view(), name='active_projects'),
+    path('api/inactive_projects/<int:page_size>/', InactiveProjectInfo.as_view(), name='inactive_projects'),
+    path('api/onhold_projects/<int:page_size>/', OnholdProjectInfo.as_view(), name='onhold_projects'),
     path('api/plan', Plan.as_view(), name='2023-plan'),
     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
     path('api/employees/<int:page_size>/', Employee.as_view(), name='employees'),
     path('api/employees/edit/<int:pk>/', EmployeeUpdateView.as_view(), name='employee-update'),
     path('api/add_employee/', EmployeeAddView.as_view(), name='employee-add'),
     path('api/delete_employee/<int:pk>/', EmployeeDeleteView.as_view(), name='delete_employee'),
+    path('api/add_project/', ProjectCreateView.as_view(), name='create_project'),
 
 
 ]
