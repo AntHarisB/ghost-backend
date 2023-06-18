@@ -21,6 +21,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from loginAPI.views import UserViewSet
 from Projects.add_project_view import ProjectCreateView
+from Projects.update_project_view import ProjectUpdateView
 
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -39,6 +40,7 @@ urlpatterns = [
     path('api/plan', Plan.as_view(), name='2023-plan'),
     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
     path('api/add_project/', ProjectCreateView.as_view(), name='create_project'),
+    path('api/update_project/<int:pk>/', ProjectUpdateView.as_view(), name='update_project'),
 
 ]
 
