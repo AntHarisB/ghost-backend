@@ -24,8 +24,4 @@ class UserSerializer(serializers.ModelSerializer):
         profile_instance.save()
 
         return super().update(instance, validated_data)
-
-
-
-
-
+        
