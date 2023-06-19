@@ -25,28 +25,3 @@ class AddUserSerializer(serializers.ModelSerializer):
         user = User.objects.create(username=username, **validated_data)
         Profile.objects.create(user=user, **profile_data)
         return user
-
-
-        
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
