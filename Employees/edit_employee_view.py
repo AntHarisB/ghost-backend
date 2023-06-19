@@ -32,20 +32,3 @@ class EmployeeUpdateView(APIView):
             return Response(user_serializer.data)
 
         return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
