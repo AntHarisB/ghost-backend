@@ -7,8 +7,6 @@ from PerformanceTab.models import ProjectInformation
 from rest_framework import permissions
 from rest_framework.decorators import permission_classes
 
-
-
 @permission_classes((permissions.AllowAny,))
 class EmployeeDeleteView(APIView):
     queryset = User.objects.all() 
@@ -30,12 +28,6 @@ class EmployeeDeleteView(APIView):
         user.delete()
         
         return Response({'success': 'Employee deleted!'}, status=status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-
 
 
     
