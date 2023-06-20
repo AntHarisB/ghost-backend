@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import ProjectInformation
 from .serializer_stats import ProjectSerializer
 from django.db.models import Avg, Sum
-from django.db.models import Count
+from RevenueCosts.models import Member
 
 class ProjectStats(generics.ListAPIView):
     serializer_class = ProjectSerializer
@@ -15,8 +15,8 @@ class ProjectStats(generics.ListAPIView):
         queryset = ProjectInformation.objects.filter(year=year)
         
         for project in queryset:
-            team_size = project.members.count()
-            project.team_s = team_size
+            team_size = Member.objects.filter(project=project).count()
+            project.team_size = team_size
             project.save()
         
         return queryset

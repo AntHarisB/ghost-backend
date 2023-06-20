@@ -24,6 +24,7 @@ from Projects.add_project_view import ProjectCreateView
 from Projects.update_project_view import ProjectUpdateView
 from Projects.delete_project_view import ProjectDeleteView
 
+
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -42,7 +43,7 @@ urlpatterns = [
     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
     path('api/add_project/', ProjectCreateView.as_view(), name='create_project'),
     path('api/update_project/<int:pk>/', ProjectUpdateView.as_view(), name='update_project'),
-    path('api/delete_project/<int:pk>/', ProjectDeleteView.as_view(), name='delete_project')
+    path('api/delete_project/<int:pk>/', ProjectDeleteView.as_view(), name='delete_project'),
 
 ]
 

@@ -29,7 +29,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'django.contrib.sites',
-    'Projects'
+    'Plan',
+    'Projects',
+    'RevenueCosts',
 ]
 
 MIDDLEWARE = [

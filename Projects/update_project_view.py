@@ -7,18 +7,12 @@ from rest_framework.decorators import permission_classes
 from .update_project_serializer import ProjectUpdateSerializer
 from django.shortcuts import get_object_or_404
 
-
 @permission_classes((permissions.AllowAny,))
-
 class ProjectUpdateView(APIView):
     def put(self, request, pk, format=None):
         project = get_object_or_404(ProjectInformation, pk=pk)
-        serializer = ProjectUpdateSerializer(project, data=request.data, partial=True)
+        serializer = ProjectUpdateSerializer(project, data=request.data, partial=True)  
         serializer.is_valid(raise_exception=True)
         serializer.save()
-
-        members = serializer.validated_data.get('members')
-        if members is not None:
-            project.members.set(members)
 
         return Response({'success': 'Project updated!'}, status=status.HTTP_200_OK)
