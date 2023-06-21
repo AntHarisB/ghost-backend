@@ -17,3 +17,4 @@ class Plan(generics.ListAPIView):
         context = super().get_serializer_context()
         context['year'] = timezone.now().year
         return context
+    

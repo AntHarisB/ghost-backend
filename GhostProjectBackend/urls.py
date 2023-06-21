@@ -24,6 +24,9 @@ from Employees.edit_employee_view import EmployeeUpdateView
 from Employees.add_employee_view import EmployeeAddView
 from Employees.delete_employee_view import EmployeeDeleteView
 from Projects.add_project_view import ProjectCreateView
+from Projects.update_project_view import ProjectUpdateView
+from Projects.delete_project_view import ProjectDeleteView
+
 
 
 urlpatterns = [
@@ -47,6 +50,8 @@ urlpatterns = [
     path('api/add_employee/', EmployeeAddView.as_view(), name='employee-add'),
     path('api/delete_employee/<int:pk>/', EmployeeDeleteView.as_view(), name='delete_employee'),
     path('api/add_project/', ProjectCreateView.as_view(), name='create_project'),
+    path('api/update_project/<int:pk>/', ProjectUpdateView.as_view(), name='update_project'),
+    path('api/delete_project/<int:pk>/', ProjectDeleteView.as_view(), name='delete_project'),
 
 
 ]

@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'Projects',
     'Employees'
+    'Plan',
+    'Projects',
+    'RevenueCosts',
 ]
 
 MIDDLEWARE = [

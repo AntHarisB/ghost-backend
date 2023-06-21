@@ -5,7 +5,8 @@ from .add_project_serializer import ProjectCreateSerializer
 from PerformanceTab.models import ProjectInformation
 from rest_framework import permissions
 from rest_framework.decorators import permission_classes
-
+from django.contrib.auth.models import User
+from RevenueCosts.models import Member
 
 @permission_classes((permissions.AllowAny,))
 class ProjectCreateView(APIView):
@@ -29,7 +30,10 @@ class ProjectCreateView(APIView):
             hours_billed=0
         )
 
-        for user in serializer.validated_data['members']:
-            project.members.add(user)
+        for member_data in serializer.validated_data['members']:
+            member = User.objects.get(pk=member_data['user_id'])
+            employment_type = member_data['employment_type']
+            project.members.add(member)
+            Member.objects.create(user=member, project=project, employment_type=employment_type)
 
         return Response({'success': 'Project created!'}, status=status.HTTP_201_CREATED)
