@@ -29,6 +29,6 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     send_mail(
         subject=email_subject,
         message=email_message,
-        from_email='edin.kohnic.20@size.ba',
+        from_email='companyac398@gmail.com',
         recipient_list=[reset_password_token.user.email]
     )
