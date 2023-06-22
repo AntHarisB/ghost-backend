@@ -27,3 +27,4 @@ class InvoicingView(generics.ListAPIView):
         if rows_per_page:
             self.pagination_class.page_size = rows_per_page
         return queryset
+    
