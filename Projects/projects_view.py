@@ -17,7 +17,7 @@ class ProjectInfoPagination(PageNumberPagination):
 
 class ProjectInfo(generics.ListAPIView):
     serializer_class = ProjectInfoSerializer
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = ProjectInformation.objects.all()
     pagination_class = ProjectInfoPagination
 
@@ -26,4 +26,12 @@ class ProjectInfo(generics.ListAPIView):
         rows_per_page = self.kwargs.get('page_size')
         if rows_per_page:
             self.pagination_class.page_size = rows_per_page
+
         return queryset
+    
+class ProjectInfo1(generics.ListAPIView):
+    serializer_class = ProjectInfoSerializer
+    permission_classes = (IsAuthenticated,)
+    queryset = ProjectInformation.objects.all()
+    
+

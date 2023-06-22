@@ -19,6 +19,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from loginAPI.views import UserViewSet
+from Projects.projects_view import ProjectInfo1
 from Employees.employees_view import Employee
 from Employees.edit_employee_view import EmployeeUpdateView
 from Employees.add_employee_view import EmployeeAddView
@@ -26,7 +27,6 @@ from Employees.delete_employee_view import EmployeeDeleteView
 from Projects.add_project_view import ProjectCreateView
 from Projects.update_project_view import ProjectUpdateView
 from Projects.delete_project_view import ProjectDeleteView
-
 
 
 urlpatterns = [
@@ -40,6 +40,7 @@ urlpatterns = [
     path('api/actual_costs_revenue/<int:year>/', ActualRevenueCosts.as_view(), name='acutal_costs_revenue'),
     path('api/actual_planned_costs_revenue/<int:year>/', RevenueCostPerMonth.as_view(), name='actual_planned_costs_revenue'),
     path('api/projects/<int:page_size>/', ProjectInfo.as_view(), name='projects'),
+    path('api/projects/', ProjectInfo1.as_view(), name='projects'),
     path('api/active_projects/<int:page_size>/', ActiveProjectInfo.as_view(), name='active_projects'),
     path('api/inactive_projects/<int:page_size>/', InactiveProjectInfo.as_view(), name='inactive_projects'),
     path('api/onhold_projects/<int:page_size>/', OnholdProjectInfo.as_view(), name='onhold_projects'),
