@@ -1,9 +1,9 @@
 from rest_framework import generics
-from PerformanceTab.models import ProjectInformation
-from .projects_serializer import ProjectInfoSerializer
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
+from .employee_serializer import EmployeeSerializer
+from django.contrib.auth.models import User
+from PerformanceTab.models import ProjectInformation
 
 class ProjectInfoPagination(PageNumberPagination):
 
@@ -15,10 +15,10 @@ class ProjectInfoPagination(PageNumberPagination):
             'results': data
         })
 
-class ProjectInfo(generics.ListAPIView):
-    serializer_class = ProjectInfoSerializer
-    permission_classes = (IsAuthenticated,)
-    queryset = ProjectInformation.objects.all()
+class Employee(generics.ListAPIView):
+    serializer_class = EmployeeSerializer
+    #permission_classes = (IsAuthenticated,)
+    queryset = User.objects.all()
     pagination_class = ProjectInfoPagination
 
     def get_queryset(self):
@@ -26,12 +26,4 @@ class ProjectInfo(generics.ListAPIView):
         rows_per_page = self.kwargs.get('page_size')
         if rows_per_page:
             self.pagination_class.page_size = rows_per_page
-
         return queryset
-    
-class ProjectInfo1(generics.ListAPIView):
-    serializer_class = ProjectInfoSerializer
-    permission_classes = (IsAuthenticated,)
-    queryset = ProjectInformation.objects.all()
-    
-

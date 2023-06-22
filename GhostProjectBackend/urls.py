@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path, include
 from PerformanceTab.view_stats import ProjectStats
@@ -21,6 +20,14 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from loginAPI.views import UserViewSet
 from Projects.projects_view import ProjectInfo1
+from Employees.employees_view import Employee
+from Employees.edit_employee_view import EmployeeUpdateView
+from Employees.add_employee_view import EmployeeAddView
+from Employees.delete_employee_view import EmployeeDeleteView
+from Projects.add_project_view import ProjectCreateView
+from Projects.update_project_view import ProjectUpdateView
+from Projects.delete_project_view import ProjectDeleteView
+
 
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -38,7 +45,15 @@ urlpatterns = [
     path('api/inactive_projects/<int:page_size>/', InactiveProjectInfo.as_view(), name='inactive_projects'),
     path('api/onhold_projects/<int:page_size>/', OnholdProjectInfo.as_view(), name='onhold_projects'),
     path('api/plan', Plan.as_view(), name='2023-plan'),
-    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset'))
+    path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('api/employees/<int:page_size>/', Employee.as_view(), name='employees'),
+    path('api/employees/edit/<int:pk>/', EmployeeUpdateView.as_view(), name='employee-update'),
+    path('api/add_employee/', EmployeeAddView.as_view(), name='employee-add'),
+    path('api/delete_employee/<int:pk>/', EmployeeDeleteView.as_view(), name='delete_employee'),
+    path('api/add_project/', ProjectCreateView.as_view(), name='create_project'),
+    path('api/update_project/<int:pk>/', ProjectUpdateView.as_view(), name='update_project'),
+    path('api/delete_project/<int:pk>/', ProjectDeleteView.as_view(), name='delete_project'),
+
 
 ]
 

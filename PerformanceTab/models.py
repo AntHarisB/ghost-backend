@@ -8,7 +8,7 @@ class ProjectInformation (models.Model):
     team_s = models.IntegerField(blank=True, null=True)
     velocity = models.IntegerField()
     weeks_over_ddl = models.IntegerField()
-    hourly_price = models.IntegerField()
+    hourly_price = models.IntegerField(null=True)
     year = models.IntegerField()
     lead_closing = models.FloatField()
     project_creation = models.CharField(max_length=100)
@@ -42,6 +42,10 @@ class ProjectInformation (models.Model):
         if self.project_value and self.costs_actual:
             return (self.costs_actual / self.project_value) * 100
         return None
+    
+
+    
+
     
 
 
