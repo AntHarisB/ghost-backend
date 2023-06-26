@@ -6,7 +6,8 @@ class EmployeeSerializer(serializers.ModelSerializer):
     department = serializers.CharField(source='profile.department')
     monthly_salary = serializers.IntegerField(source='profile.monthly_salary')
     tech_stack = serializers.CharField(source='profile.tech_stack')
+    profile_photo = serializers.URLField(source='profile.profile_photo')
 
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'department', 'monthly_salary', 'tech_stack')
+        fields = ('id', 'first_name', 'last_name', 'department', 'monthly_salary', 'tech_stack', 'profile_photo')

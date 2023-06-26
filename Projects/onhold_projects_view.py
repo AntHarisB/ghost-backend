@@ -27,7 +27,7 @@ class OnholdProjectInfo(generics.ListAPIView):
         if rows_per_page:
             self.pagination_class.page_size = rows_per_page
 
-        queryset = queryset.filter(status='On hold')
+        queryset = queryset.filter(status='Completed')
         return queryset
     
 

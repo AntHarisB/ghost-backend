@@ -31,7 +31,7 @@ class ProjectInfo(generics.ListAPIView):
     
 class ProjectInfo1(generics.ListAPIView):
     serializer_class = ProjectInfoSerializer
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     queryset = ProjectInformation.objects.all()
     
 

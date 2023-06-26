@@ -20,10 +20,12 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from loginAPI.views import UserViewSet
 from Projects.projects_view import ProjectInfo1
-from Employees.employees_view import Employee
+from Employees.employees_view import Employee, EmployeeList
+from Employees.getEmployeeId_view import EmployeeId
 from Employees.edit_employee_view import EmployeeUpdateView
 from Employees.add_employee_view import EmployeeAddView
 from Employees.delete_employee_view import EmployeeDeleteView
+from Projects.getProjectId_view import ProjectId
 from Projects.add_project_view import ProjectCreateView
 from Projects.update_project_view import ProjectUpdateView
 from Projects.delete_project_view import ProjectDeleteView
@@ -40,6 +42,7 @@ urlpatterns = [
     path('api/actual_costs_revenue/<int:year>/', ActualRevenueCosts.as_view(), name='acutal_costs_revenue'),
     path('api/actual_planned_costs_revenue/<int:year>/', RevenueCostPerMonth.as_view(), name='actual_planned_costs_revenue'),
     path('api/projects/<int:page_size>/', ProjectInfo.as_view(), name='projects'),
+    path('api/project_id/<int:id>/', ProjectId.as_view(), name='project_id'),
     path('api/projects/', ProjectInfo1.as_view(), name='projects'),
     path('api/active_projects/<int:page_size>/', ActiveProjectInfo.as_view(), name='active_projects'),
     path('api/inactive_projects/<int:page_size>/', InactiveProjectInfo.as_view(), name='inactive_projects'),
@@ -47,6 +50,8 @@ urlpatterns = [
     path('api/plan', Plan.as_view(), name='2023-plan'),
     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
     path('api/employees/<int:page_size>/', Employee.as_view(), name='employees'),
+    path('api/employees_list/', EmployeeList.as_view(), name='employees_list'),
+    path('api/employees_id/<int:id>/', EmployeeId.as_view(), name='employee_id'),
     path('api/employees/edit/<int:pk>/', EmployeeUpdateView.as_view(), name='employee-update'),
     path('api/add_employee/', EmployeeAddView.as_view(), name='employee-add'),
     path('api/delete_employee/<int:pk>/', EmployeeDeleteView.as_view(), name='delete_employee'),

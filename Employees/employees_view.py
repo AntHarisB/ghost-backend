@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from .employee_serializer import EmployeeSerializer
 from django.contrib.auth.models import User
-from PerformanceTab.models import ProjectInformation
 
 class ProjectInfoPagination(PageNumberPagination):
 
@@ -27,3 +26,8 @@ class Employee(generics.ListAPIView):
         if rows_per_page:
             self.pagination_class.page_size = rows_per_page
         return queryset
+    
+class EmployeeList(generics.ListAPIView):
+    serializer_class = EmployeeSerializer
+    #permission_classes = (IsAuthenticated,)
+    queryset = User.objects.all()

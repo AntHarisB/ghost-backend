@@ -16,7 +16,7 @@ class ProjectStats(generics.ListAPIView):
         
         for project in queryset:
             team_size = Member.objects.filter(project=project).count()
-            project.team_size = team_size
+            project.team_s = team_size
             project.save()
         
         return queryset
