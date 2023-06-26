@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'Employees',
     'Plan',
     'Projects',
+    'Invoicing',
     'RevenueCosts',
 ]
 
