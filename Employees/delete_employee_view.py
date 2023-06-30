@@ -6,6 +6,7 @@ from rest_framework import status
 from PerformanceTab.models import ProjectInformation
 from rest_framework import permissions
 from rest_framework.decorators import permission_classes
+from RevenueCosts.models import Member
 
 @permission_classes((permissions.AllowAny,))
 class EmployeeDeleteView(APIView):
@@ -17,7 +18,7 @@ class EmployeeDeleteView(APIView):
         except User.DoesNotExist:
             raise Http404
         
-            members.objects.filter(user_id=user.id).delete()
+        Member.objects.filter(user_id=user.id).delete()
         
         try:
             profile = user.profile
