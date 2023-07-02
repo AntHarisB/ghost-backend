@@ -7,23 +7,23 @@ from django.core.mail import send_mail
 
 @receiver(reset_password_token_created)
 def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
-    reset_password_url = reverse('password_reset:reset-password-request')
-    reset_password_url += "?token={}".format(reset_password_token.key)
+    reset_password_url = "TOKEN = {}".format(reset_password_token.key)
 
-    email_subject = 'Restovanje lozinke Ant Colony APP'
+    email_subject = 'Ant Colony APP Password Recovery'
     email_message = """
-    Poštovani,
+    Dear All,
 
-    Primili smo zahtjev za resetiranje lozinke za vaš račun na Ant Colony APP. Kako biste resetirali lozinku, uđite na stranicu http://127.0.0.1:8000/api/password_reset/confirm/, te kopirajte TOKEN iz sljedećeg URL-a i zalijepite ga u polje za TOKEN (u polje Password unesite novu lozinku):
+    We have received a request to reset the password for your account on Ant Colony APP. 
+    Please copy the TOKEN and transfer it to the TOKEN field (enter the new password in the Password field):
 
     {}
 
-    Ako niste zatražili resetiranje lozinke, možete zanemariti ovu poruku.
+    If you have not requested a password reset, you can ignore this message.
 
-    Hvala vam.
+    Thank you.
 
-    Srdačan pozdrav,
-    Ant Colony APP tim
+    Best regards,
+    Ant Colony APP Team
     """.format(reset_password_url)
 
     send_mail(
