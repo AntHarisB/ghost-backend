@@ -5,6 +5,7 @@ from .models import ProjectInformation
 from .serializer_stats import ProjectSerializer
 from django.db.models import Avg, Sum
 from RevenueCosts.models import Member
+from django.db.models.functions import ExtractYear
 
 class ProjectStats(generics.ListAPIView):
     serializer_class = ProjectSerializer
@@ -12,6 +13,7 @@ class ProjectStats(generics.ListAPIView):
 
     def get_queryset(self):
         year = self.kwargs['year']
+        ProjectInformation.objects.update(year=ExtractYear('date_start'))
         queryset = ProjectInformation.objects.filter(year=year)
         
         for project in queryset:

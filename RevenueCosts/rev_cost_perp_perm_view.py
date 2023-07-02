@@ -4,6 +4,7 @@ from datetime import date
 from rest_framework.permissions import IsAuthenticated
 from django.db.models import Q
 from .rev_cost_perp_perm_serializer import ActualRevenueCostsMonthSerializer
+from django.db.models.functions import ExtractYear
 
 class RevenueCostPerMonth(generics.ListAPIView):
     serializer_class = ActualRevenueCostsMonthSerializer
@@ -11,6 +12,7 @@ class RevenueCostPerMonth(generics.ListAPIView):
 
     def get_queryset(self):
         year = self.kwargs['year']
+        ProjectInformation.objects.update(year=ExtractYear('date_start'))
         today = date.today()
         current_month = today.month
 
