@@ -2,6 +2,7 @@ from rest_framework import serializers
 from PerformanceTab.models import ProjectInformation
 from .models import Profile
 from django.contrib.auth.models import User
+from RevenueCosts.models import Member
 
 class InactiveProjectInfoSerializer(serializers.ModelSerializer):
     total_projects = serializers.SerializerMethodField()
@@ -10,13 +11,13 @@ class InactiveProjectInfoSerializer(serializers.ModelSerializer):
     users = serializers.SerializerMethodField()
 
     def get_users(self, obj):
-        members = obj.members.all()
+        members = Member.objects.filter(project=obj)
         users_data = []
         for member in members:
-            profile = Profile.objects.get(user=member)
+            profile = Profile.objects.get(user=member.user)
             users_data.append({
-                'first_name': member.first_name,
-                'last_name': member.last_name,
+                'first_name': member.user.first_name,
+                'last_name': member.user.last_name,
                 'profile_photo': profile.profile_photo,
             })
 
