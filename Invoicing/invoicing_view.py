@@ -17,7 +17,7 @@ class ProjectInfoPagination(PageNumberPagination):
 
 class InvoicingView(generics.ListAPIView):
     serializer_class = InvoicingSerializer
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = Invoicing.objects.all()
     pagination_class = ProjectInfoPagination
 
@@ -28,3 +28,8 @@ class InvoicingView(generics.ListAPIView):
             self.pagination_class.page_size = rows_per_page
         return queryset
     
+
+class InvoicingViewAll(generics.ListAPIView):
+    serializer_class = InvoicingSerializer
+    #permission_classes = (IsAuthenticated,)
+    queryset = Invoicing.objects.all()    
