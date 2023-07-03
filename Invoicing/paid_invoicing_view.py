@@ -15,7 +15,7 @@ class ProjectInfoPagination(PageNumberPagination):
             'results': data
         })
 
-class InvoicingView(generics.ListAPIView):
+class PaidInvoicingView(generics.ListAPIView):
     serializer_class = InvoicingSerializer
     permission_classes = (IsAuthenticated,)
     queryset = Invoicing.objects.all()
@@ -26,10 +26,6 @@ class InvoicingView(generics.ListAPIView):
         rows_per_page = self.kwargs.get('page_size')
         if rows_per_page:
             self.pagination_class.page_size = rows_per_page
-        return queryset
-    
 
-class InvoicingViewAll(generics.ListAPIView):
-    serializer_class = InvoicingSerializer
-    permission_classes = (IsAuthenticated,)
-    queryset = Invoicing.objects.all()    
+        queryset = queryset.filter(status='paid')
+        return queryset
