@@ -32,6 +32,7 @@ from Projects.delete_project_view import ProjectDeleteView
 from Invoicing.invoicing_view import InvoicingView, InvoicingViewAll
 from Invoicing.paid_invoicing_view import PaidInvoicingView
 from Invoicing.sent_invoicing_view import SentInvoicingView
+from Invoicing.delete_invoicing_view import InvoicingDeleteView
 
 
 urlpatterns = [
@@ -65,6 +66,7 @@ urlpatterns = [
     path('api/invoicing/', InvoicingViewAll.as_view(), name='all_inovicing'),
     path('api/paid_invoicing/<int:page_size>/', PaidInvoicingView.as_view(), name='paid_inovicing'),
     path('api/sent_invoicing/<int:page_size>/', SentInvoicingView.as_view(), name='sent_inovicing'),
+    path('api/delete_invoicing/<int:pk>/', InvoicingDeleteView.as_view(), name='delete_inovicing'),
 
 ]
 
