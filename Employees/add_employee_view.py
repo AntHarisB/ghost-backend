@@ -1,13 +1,9 @@
-from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-from .add_employee_serializer import AddUserSerializer, ProfileSerializer
-from django.contrib.auth.models import User
+from .add_employee_serializer import AddUserSerializer
 from rest_framework import status
-from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework import permissions
 from rest_framework.decorators import permission_classes
-from rest_framework import request
 
 
 @permission_classes((permissions.AllowAny,))

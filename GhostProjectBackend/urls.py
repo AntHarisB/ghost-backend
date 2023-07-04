@@ -33,7 +33,8 @@ from Invoicing.invoicing_view import InvoicingView, InvoicingViewAll
 from Invoicing.paid_invoicing_view import PaidInvoicingView
 from Invoicing.sent_invoicing_view import SentInvoicingView
 from Invoicing.delete_invoicing_view import InvoicingDeleteView
-
+from Invoicing.pdf_invoicing_view import generate_invoice_pdf
+from Invoicing.invoicing_status_view import StatusInvoicingView
 
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -67,6 +68,8 @@ urlpatterns = [
     path('api/paid_invoicing/<int:page_size>/', PaidInvoicingView.as_view(), name='paid_inovicing'),
     path('api/sent_invoicing/<int:page_size>/', SentInvoicingView.as_view(), name='sent_inovicing'),
     path('api/delete_invoicing/<int:pk>/', InvoicingDeleteView.as_view(), name='delete_inovicing'),
+    path('api/invoices_pdf/<int:invoice_id>/', generate_invoice_pdf, name='generate_invoice_pdf'),
+    path('api/invoice_status/<int:pk>/', StatusInvoicingView.as_view(), name='status_invoice'),
 
 ]
 
