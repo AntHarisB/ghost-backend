@@ -10,10 +10,11 @@ from rest_framework.decorators import permission_classes
 @permission_classes((permissions.AllowAny,))
 class StatusInvoicingView(generics.RetrieveUpdateAPIView):
     serializer_class = InvoicingSerializer
+    lookup_field = 'id'
 
     def get_queryset(self):
-        pk = self.kwargs.get('pk')
-        return Invoicing.objects.filter(pk=pk)
+        id = self.kwargs.get('id')  
+        return Invoicing.objects.filter(id=id)
 
     def put(self, request, *args, **kwargs):
         instance = self.get_object()

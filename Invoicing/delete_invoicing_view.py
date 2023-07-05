@@ -9,11 +9,10 @@ from rest_framework.decorators import permission_classes
 
 @permission_classes((permissions.AllowAny,))
 class InvoicingDeleteView(APIView):
-    queryset = Invoicing.objects.all()
-
-    def delete(self, request, pk, format=None):
+    
+    def delete(self, request, id, format=None):
         try:
-            invoicing = Invoicing.objects.get(pk=pk)
+            invoicing = Invoicing.objects.get(id=id)
         except Invoicing.DoesNotExist:
             raise Http404
         
