@@ -18,8 +18,8 @@ class StatusInvoicingView(generics.RetrieveUpdateAPIView):
 
     def put(self, request, *args, **kwargs):
         instance = self.get_object()
-        paid_clicked = request.data.get('paid_clicked')
-        sent_clicked = request.data.get('sent_clicked')
+        paid_clicked = request.data.get('paid')
+        sent_clicked = request.data.get('sent')
 
         if paid_clicked == 'paid':
             instance.paid = 'paid'
