@@ -9,6 +9,7 @@ from rest_framework.decorators import permission_classes
 
 @permission_classes((permissions.AllowAny,))
 class InvoicingDeleteView(APIView):
+    lookup_field = 'id'
     
     def delete(self, request, id, format=None):
         try:

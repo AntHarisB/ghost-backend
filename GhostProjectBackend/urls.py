@@ -67,7 +67,7 @@ urlpatterns = [
     path('api/invoicing/', InvoicingViewAll.as_view(), name='all_inovicing'),
     path('api/paid_invoicing/<int:page_size>/', PaidInvoicingView.as_view(), name='paid_inovicing'),
     path('api/sent_invoicing/<int:page_size>/', SentInvoicingView.as_view(), name='sent_inovicing'),
-    path('api/delete_invoicing/<int:invoice_id>/', InvoicingDeleteView.as_view(), name='delete_inovicing'),
+    path('api/delete_invoicing/<int:id>/', InvoicingDeleteView.as_view(), name='delete_inovicing'),
     path('api/invoices_pdf/<int:invoice_id>/', generate_invoice_pdf, name='generate_invoice_pdf'),
     path('api/invoice_status/<int:id>/', StatusInvoicingView.as_view(), name='status_invoice'),
 
