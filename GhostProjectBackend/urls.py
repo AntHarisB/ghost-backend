@@ -15,6 +15,8 @@ from Plan.plan_view import Plan
 from django.urls import path, include
 from django.contrib import admin
 from loginAPI.views import UserViewSet
+from loginAPI.forgot_password import confirm_password_reset
+from django_rest_passwordreset import views as password_reset_views
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
@@ -54,6 +56,7 @@ urlpatterns = [
     path('api/onhold_projects/<int:page_size>/', OnholdProjectInfo.as_view(), name='onhold_projects'),
     path('api/plan', Plan.as_view(), name='2023-plan'),
     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('api/password_reset/confirm/', confirm_password_reset, name='password_reset_confirm'),
     path('api/employees/<int:page_size>/', Employee.as_view(), name='employees'),
     path('api/employees_list/', EmployeeList.as_view(), name='employees_list'),
     path('api/employees_id/<int:id>/', EmployeeId.as_view(), name='employee_id'),
