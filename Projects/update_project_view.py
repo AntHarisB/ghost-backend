@@ -16,3 +16,4 @@ class ProjectUpdateView(APIView):
         serializer.save()
 
         return Response({'success': 'Project updated!'}, status=status.HTTP_200_OK)
+

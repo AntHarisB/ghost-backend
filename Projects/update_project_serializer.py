@@ -13,7 +13,7 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProjectInformation
-        fields = ['project_name', 'description', 'date_start', 'date_end', 'status', 'hourly_price', 'project_value', 'members']
+        fields = ['id', 'project_name', 'description', 'date_start', 'date_end', 'status', 'hourly_price', 'project_value', 'members']
 
     def update(self, instance, validated_data):
         members_data = validated_data.pop('members', [])
