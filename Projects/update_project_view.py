@@ -9,8 +9,8 @@ from django.shortcuts import get_object_or_404
 
 @permission_classes((permissions.AllowAny,))
 class ProjectUpdateView(APIView):
-    def put(self, request, pk, format=None):
-        project = get_object_or_404(ProjectInformation, pk=pk)
+    def put(self, request, project_id, format=None):
+        project = get_object_or_404(ProjectInformation, id=project_id)
         serializer = ProjectUpdateSerializer(project, data=request.data, partial=True)  
         serializer.is_valid(raise_exception=True)
         serializer.save()

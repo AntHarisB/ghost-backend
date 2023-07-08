@@ -11,9 +11,9 @@ from rest_framework.decorators import permission_classes
 class ProjectDeleteView(APIView):
     queryset = ProjectInformation.objects.all()
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, project_id, format=None):
         try:
-            project = ProjectInformation.objects.get(pk=pk)
+            project = ProjectInformation.objects.get(id=project_id)
         except ProjectInformation.DoesNotExist:
             raise Http404
 

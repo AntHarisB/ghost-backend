@@ -13,8 +13,8 @@ class EmployeeUpdateView(APIView):
     def get_object(self, user_id):
         return get_object_or_404(User, id=user_id)
 
-    def put(self, request, pk, format=None):
-        instance = self.get_object(pk)
+    def put(self, request, user_id, format=None):
+        instance = self.get_object(user_id)
         user_serializer = UserSerializer(instance, data=request.data, partial=True)
         profile_instance = instance.profile
         profile_data = {

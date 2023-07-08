@@ -11,9 +11,9 @@ from RevenueCosts.models import Member
 class EmployeeDeleteView(APIView):
     queryset = User.objects.all() 
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, id, format=None):
         try:
-            user = User.objects.get(pk=pk)
+            user = User.objects.get(id=id)
         except User.DoesNotExist:
             raise Http404
         
