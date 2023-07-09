@@ -31,6 +31,6 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
             else:
                 Member.objects.create(user=user, project=instance, employment_type=employment_type)
 
-        Member.objects.filter(project=instance).exclude(user__in=[member_data['user'] for member_data in members_data]).delete()
+        #Member.objects.filter(project=instance).exclude(user__in=[member_data['user'] for member_data in members_data]).delete()
 
         return super().update(instance, validated_data)
