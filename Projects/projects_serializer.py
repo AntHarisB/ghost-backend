@@ -16,6 +16,7 @@ class ProjectInfoSerializer(serializers.ModelSerializer):
         for member in members:
             profile = Profile.objects.get(user=member.user)
             users_data.append({
+                'id': member.user.id,
                 'first_name': member.user.first_name,
                 'last_name': member.user.last_name,
                 'profile_photo': profile.profile_photo,
