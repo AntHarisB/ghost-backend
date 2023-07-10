@@ -7,5 +7,9 @@ class Profile(models.Model):
     department = models.CharField(max_length=100, blank=True)
     monthly_salary = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     tech_stack = models.CharField(max_length=100, blank=True)
+    obrisan = models.BooleanField(default=False)
+    
+
+
 
 

@@ -21,10 +21,11 @@ class EmployeeDeleteView(APIView):
         
         try:
             profile = user.profile
-            profile.delete()
+            profile.obrisan = True
+            profile.save()
         except user.profile.DoesNotExist:
             pass
        
-        user.delete()
+        #user.delete()
         
         return Response({'success': 'Employee deleted!'}, status=status.HTTP_204_NO_CONTENT)

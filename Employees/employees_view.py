@@ -21,7 +21,7 @@ class Employee(generics.ListAPIView):
     pagination_class = ProjectInfoPagination
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = User.objects.filter(profile__obrisan=0).distinct()
         rows_per_page = self.kwargs.get('page_size')
         if rows_per_page:
             self.pagination_class.page_size = rows_per_page
@@ -30,4 +30,4 @@ class Employee(generics.ListAPIView):
 class EmployeeList(generics.ListAPIView):
     serializer_class = EmployeeSerializer
     #permission_classes = (IsAuthenticated,)
-    queryset = User.objects.all()
+    queryset = User.objects.filter(profile__obrisan=0).distinct()
