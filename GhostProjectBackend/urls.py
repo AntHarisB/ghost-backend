@@ -27,7 +27,7 @@ from Employees.getEmployeeId_view import EmployeeId
 from Employees.edit_employee_view import EmployeeUpdateView
 from Employees.add_employee_view import EmployeeAddView
 from Employees.delete_employee_view import EmployeeDeleteView
-from Employees.deletedEmployees_view import PastEmployeesList
+from Employees.deletedEmployees_view import PastEmployeesList, PastEmployeesListPages
 from Projects.getProjectId_view import ProjectId
 from Projects.add_project_view import ProjectCreateView
 from Projects.update_project_view import ProjectUpdateView
@@ -65,6 +65,7 @@ urlpatterns = [
     path('api/add_employee/', EmployeeAddView.as_view(), name='employee-add'),
     path('api/delete_employee/<int:id>/', EmployeeDeleteView.as_view(), name='delete_employee'),
     path('api/past_employees/', PastEmployeesList.as_view(), name='past_employees'),
+    path('api/past_employees/<int:page_size>/', PastEmployeesListPages.as_view(), name='past_employees_pages'),
     path('api/add_project/', ProjectCreateView.as_view(), name='create_project'),
     path('api/update_project/<int:project_id>/', ProjectUpdateView.as_view(), name='update_project'),
     path('api/delete_project/<int:project_id>/', ProjectDeleteView.as_view(), name='delete_project'),
